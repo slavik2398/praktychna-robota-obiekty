@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<title>Практична робота — Об'єкти</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f2f2f2;
+        margin: 0;
+        padding: 20px;
+    }
+    .container {
+        max-width: 800px;
+        margin: auto;
+        background: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+        margin-top: 30px;
+        border-left: 5px solid #4CAF50;
+        padding-left: 10px;
+    }
+    pre {
+        background: #eee;
+        padding: 10px;
+        border-radius: 6px;
+        overflow-x: auto;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Практична робота: Об'єкти</h1>
+
+    <!-- Задача 1 -->
+    <h2>Задача 1 — Об'єкт з методом</h2>
+    <p>Приклад створення об'єкта та методу:</p>
+    <pre id="task1"></pre>
+
+    <!-- Задача 2 -->
+    <h2>Задача 2 — Сортування столиць</h2>
+    <p><b>Сортування за алфавітом:</b></p>
+    <pre id="sortAlpha"></pre>
+
+    <p><b>Сортування за кількістю населення:</b></p>
+    <pre id="sortPop"></pre>
+</div>
+
+<script>
+// ЗАДАЧА 1
+const person = {
+    name: "Вячеслав",
+    age: 22,
+    sayHello: function() {
+        return `Привіт! Мене звати ${this.name}.`;
+    }
+};
+
+document.getElementById("task1").textContent =
+    "Результат методу: " + person.sayHello();
+
+
+// ЗАДАЧА 2
+const capitals = {
+    Київ: 2960000,
+    Варшава: 1790000,
+    Токіо: 13960000,
+    Берлін: 3769000,
+    Париж: 2161000
+};
+
+// Сортування за алфавітом
+const sortedByName = Object.entries(capitals)
+    .sort((a, b) => a[0].localeCompare(b[0]));
+
+document.getElementById("sortAlpha").textContent =
+    sortedByName.map(item => `${item[0]} — ${item[1].toLocaleString()} осіб`).join("\n");
+
+// Сортування за населенням
+const sortedByPopulation = Object.entries(capitals)
+    .sort((a, b) => a[1] - b[1]);
+
+document.getElementById("sortPop").textContent =
+    sortedByPopulation.map(item => `${item[0]} — ${item[1].toLocaleString()} осіб`).join("\n");
+
+</script>
+
+</body>
+</html>
+
